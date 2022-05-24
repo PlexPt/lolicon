@@ -1,0 +1,8 @@
+
+server:
+  port: 520
+
+# mysql
+spring:
+  profiles:
+    active: prod
