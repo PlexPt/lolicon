@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISetuService extends IService<Setu> {
 
+    void dled(Setu setu);
 }

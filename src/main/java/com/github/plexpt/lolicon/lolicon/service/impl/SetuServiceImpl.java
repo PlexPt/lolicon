@@ -1,14 +1,16 @@
 package com.github.plexpt.lolicon.lolicon.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.plexpt.lolicon.lolicon.entity.Setu;
 import com.github.plexpt.lolicon.lolicon.mapper.SetuMapper;
 import com.github.plexpt.lolicon.lolicon.service.ISetuService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
 import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author plexpt
@@ -17,4 +19,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class SetuServiceImpl extends ServiceImpl<SetuMapper, Setu> implements ISetuService {
 
+    @Override
+    public void dled(Setu setu) {
+        update(new UpdateWrapper<Setu>()
+                .set("dl", 1)
+                .eq("pid", setu.getPid())
+        );
+
+    }
 }

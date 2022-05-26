@@ -2,6 +2,7 @@ package com.github.plexpt.lolicon;
 
 
 import com.alibaba.fastjson.JSON;
+import com.github.plexpt.lolicon.lolicon.aop.TimeLog;
 
 import net.dreamlu.mica.http.HttpRequest;
 
@@ -10,6 +11,9 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class LoliconBotApi {
 
 
@@ -165,7 +169,6 @@ public class LoliconBotApi {
                 .query("num", num)
                 .execute()
                 .asString();
-
         LoliconData data = JSON.parseObject(res, LoliconData.class);
         if (StringUtils.isNotEmpty(data.getError())) {
             String pret = JSON.toJSONString(data, true);
@@ -173,10 +176,13 @@ public class LoliconBotApi {
             return new ArrayList<>();
         }
 
-        return data.getData();
+        List<LoliconData.DataDTO> list = data.getData();
+        log.info("get https://api.lolicon.app/setu/v2 success "+ list.size());
+        return list;
     }
 
+    @TimeLog
     public static List<LoliconData.DataDTO> get() {
-        return get(1, 100);
+        return get(0, 100);
     }
 }

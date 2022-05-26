@@ -44,4 +44,7 @@ public class Setu {
 
     private String urls;
 
+    Integer dl;
+
+
 }
