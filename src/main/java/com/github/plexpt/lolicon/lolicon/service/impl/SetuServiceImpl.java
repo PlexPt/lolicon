@@ -24,6 +24,7 @@ public class SetuServiceImpl extends ServiceImpl<SetuMapper, Setu> implements IS
         update(new UpdateWrapper<Setu>()
                 .set("dl", 1)
                 .eq("pid", setu.getPid())
+                .eq("p", setu.getP())
         );
 
     }

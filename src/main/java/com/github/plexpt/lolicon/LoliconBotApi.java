@@ -183,6 +183,6 @@ public class LoliconBotApi {
 
     @TimeLog
     public static List<LoliconData.DataDTO> get() {
-        return get(0, 100);
+        return get(2, 100);
     }
 }

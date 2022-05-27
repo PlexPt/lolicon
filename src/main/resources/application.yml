@@ -1,8 +1,36 @@
 
+logging:
+  config: classpath:logback-spring.xml
+
+
 server:
   port: 520
 
 # mysql
 spring:
+  application:
+    name: lolicon
   profiles:
     active: prod
+
+api: true
+dl: false
+
+
+rocketmq:
+  producer:
+    group: ${spring.application.name}
+    sendMessageTimeout: 30000
+    compressMessageBodyThreshold: 4096
+    retryTimesWhenSendFailed: 0
+    retryTimesWhenSendAsyncFailed: 0
+    retryNextServer: false
+    maxMessageSize: 41943040
+
+rocket:
+  queue:
+    lolicon:
+      pull:
+        topic: lolicon-pull
+        group: lolicon-pull-group
+

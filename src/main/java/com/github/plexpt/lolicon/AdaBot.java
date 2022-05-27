@@ -4,6 +4,7 @@ import com.github.plexpt.lolicon.lolicon.aop.TimeLog;
 import com.github.plexpt.lolicon.lolicon.entity.Setu;
 import com.github.plexpt.lolicon.lolicon.service.ISetuService;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.DependsOn;
@@ -24,13 +25,20 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class AdaBot implements ApplicationRunner {
 
-    boolean skip = true;
     final ISetuService setuService;
+    final MQService mqService;
     ExecutorService executor = Executors.newFixedThreadPool(5);
+
+    @Value("${api}")
+    boolean api = false;
+
+    int max = 48446;
+
+    int se = 12164;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        if (skip) {
+        if (!api) {
             return;
         }
         executor.submit(() -> {
@@ -62,7 +70,10 @@ public class AdaBot implements ApplicationRunner {
             log.error("" + e.toString());
         }
 
-        saveAll(list);
+        LoliconData data = new LoliconData();
+        data.setData(list);
+        mqService.send(data);
+//        saveAll(list);
     }
 
     @TimeLog

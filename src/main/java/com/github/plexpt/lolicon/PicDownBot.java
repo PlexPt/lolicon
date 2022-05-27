@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.plexpt.lolicon.lolicon.entity.Setu;
 import com.github.plexpt.lolicon.lolicon.service.ISetuService;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +28,15 @@ public class PicDownBot implements CommandLineRunner {
 
     ExecutorService executor = Executors.newFixedThreadPool(5);
     final ISetuService setuService;
+    @Value("${dl}")
+    boolean dl = false;
+
 
     @Override
     public void run(String... args) throws Exception {
+        if (!dl) {
+            return;
+        }
         executor.submit(() -> {
             log.info("开始下载");
 

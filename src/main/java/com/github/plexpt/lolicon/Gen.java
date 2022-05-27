@@ -2,6 +2,7 @@ package com.github.plexpt.lolicon;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
+import com.baomidou.mybatisplus.generator.config.TemplateType;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.io.IOException;
@@ -37,11 +38,17 @@ public class Gen {
                             .entityBuilder()
                             .enableLombok()
                             .disableSerialVersionUID()
-                            .build();
+                            .build()
+                            .serviceBuilder()
+                            .formatServiceFileName("%sService")
+                            .build()
+                    ;
 
                     ; // 设置过滤表前缀
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                .templateConfig(b -> b.disable(TemplateType.XML)
+                        .disable(TemplateType.SERVICE))
                 .execute();
     }
 
