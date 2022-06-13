@@ -1,13 +1,13 @@
 package com.github.plexpt.lolicon.lolicon.mapper;
 
-import com.github.plexpt.lolicon.lolicon.entity.Setu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.github.plexpt.lolicon.lolicon.entity.Setu;
 
 import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author plexpt

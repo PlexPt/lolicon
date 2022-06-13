@@ -15,9 +15,7 @@ import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 
 /**
- *
  * dozer转换类
- *
  *
  * @author liyue
  * @version v2
@@ -50,8 +48,8 @@ public class Dozer {
      * {@link com.github.dozermapper.core.util.MappingValidator#validateMappingRequest}
      *
      * @param source 源实体 不能为NULL
-     * @param clazz 目标实体 不能为NULL
-     * @param <T> 泛型
+     * @param clazz  目标实体 不能为NULL
+     * @param <T>    泛型
      * @return 转换后的结果
      */
     @NonNull
@@ -66,8 +64,8 @@ public class Dozer {
      * {@link com.github.dozermapper.core.util.MappingValidator#validateMappingRequest}
      *
      * @param source 源集合 可以为NULL
-     * @param clazz 目标实体 不能为NULL
-     * @param <T> 泛型
+     * @param clazz  目标实体 不能为NULL
+     * @param <T>    泛型
      * @return 转换后的结果
      */
     @Nullable

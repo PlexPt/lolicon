@@ -2,8 +2,6 @@ package com.github.plexpt.lolicon;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.List;
 
 import lombok.Data;

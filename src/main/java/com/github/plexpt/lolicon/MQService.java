@@ -4,13 +4,11 @@ import com.alibaba.fastjson.JSON;
 
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.SendStatus;
-import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +24,7 @@ public class MQService {
 
     public void send(LoliconData data) {
         try {
-            SendResult result = rocketTemplate.syncSend(topic,  JSON.toJSONString(data));
+            SendResult result = rocketTemplate.syncSend(topic, JSON.toJSONString(data));
             if (!isSuccess(result)) {
                 log.warn("发送消息不成功, 消息投递失败 ===> topic:{} result:{}", topic, result);
                 throw new UnsupportedOperationException("发送消息不成功, 消息投递失败:" + result.toString());

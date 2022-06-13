@@ -22,7 +22,7 @@ public class LoliconBotApi {
      */
     public static void main(String[] args) {
 
-        System.out.println(JSON.toJSONString(get(),true));
+        System.out.println(JSON.toJSONString(get(), true));
     }
 
     /**
@@ -177,7 +177,7 @@ public class LoliconBotApi {
         }
 
         List<LoliconData.DataDTO> list = data.getData();
-        log.info("get https://api.lolicon.app/setu/v2 success "+ list.size());
+        log.info("get https://api.lolicon.app/setu/v2 success " + list.size());
         return list;
     }
 
